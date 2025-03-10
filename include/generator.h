@@ -16,7 +16,7 @@ enum Distribution {
 struct dist_parameters {
     int min;
     int max;
-    float q;
+    float q = 1.0f;
 };
 
 class generator{
@@ -35,7 +35,7 @@ public:
     generator()=default;
     generator(std::vector<char> &alphabet, std::string &dist, int &text_sz );
 
-    std::string generate(dist_parameters &params);
+    std::string generate(dist_parameters &params, bool save_to_file);
 
 
 

@@ -26,10 +26,10 @@ int main(int argc, char *argv[]){
       alphabet_length = -1;
     }
 
-    std::string alphabet = read_alphabet(file_path);
+    std::string alphabet = "0123456789";//"abcdefghijklmnopqrstuvwxyz";//read_alphabet(file_path);
 
-    std::transform(alphabet.begin(), alphabet.end(), alphabet.begin(),
-      [] (unsigned char c){return std::tolower(c);});
+    // std::transform(alphabet.begin(), alphabet.end(), alphabet.begin(),
+    //   [] (unsigned char c){return std::tolower(c);});
 
 
     std::vector<char> c_alphabet;
@@ -39,10 +39,10 @@ int main(int argc, char *argv[]){
     } else {
       c_alphabet.assign(alphabet.begin(), alphabet.begin() + alphabet_length);
     }
-
-
-    dist_parameters params = {0, alphabet_length};
-    std::string result = generator(c_alphabet, distribution, text_sz).generate(params);
+    
+    
+    dist_parameters params = {0, alphabet.length() - 1};
+    std::string result = generator(c_alphabet, distribution, text_sz).generate(params, true);
 
     std::cout << result << std::endl;
   }else{
